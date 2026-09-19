@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IREMWA COOLING SYSTEM Ltd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ==================== GLOBAL ==================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0b1a33; /* Dark blue */
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #ffd700; /* Yellow */
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ==================== HEADER & LOGO ==================== */
+    header {
+      background: #071224;
+      padding: 1rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #ffd700;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Elliptical Logo */
+    .logo {
+      width: 90px;
+      height: 60px;
+      border: 3px solid #ffd700;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0f2547;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .logo .abbr {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffd700;
+      line-height: 1;
+    }
+
+    .logo .full {
+      font-size: 0.55rem;
+      color: #fff;
+      line-height: 1.1;
+      padding: 0 4px;
+    }
+
+    .company-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    /* ==================== NAVIGATION ==================== */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav button {
+      background: transparent;
+      border: 2px solid #ffd700;
+      color: #ffd700;
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+
+    nav button:hover,
+    nav button.active {
+      background: #ffd700;
+      color: #0b1a33;
+      text-decoration: none;
+    }
+
+    /* ==================== LANGUAGE SECTION ==================== */
+    .lang-section {
+      background: #0f2547;
+      border-bottom: 1px solid #ffd700;
+      padding: 0.7rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lang-title {
+      color: #ffd700;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .lang-options {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-btn {
+      background: #071224;
+      border: 1px solid #ffd700;
+      color: #ffd700;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .lang-btn:hover {
+      background: #ffd700;
+      color: #0b1a33;
+    }
+
+    /* ==================== MAIN LAYOUT ==================== */
+    .layout {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    .content-area {
+      flex: 2 1 600px;
+      min-width: 300px;
+    }
+
+    .sidebar {
+      flex: 1 1 300px;
+      min-width: 260px;
+      background: #0f2547;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 1.2rem;
+      align-self: flex-start;
+      position: sticky;
+      top: 90px;
+    }
+
+    .sidebar h3 {
+      color: #ffd700;
+      margin-bottom: 0.7rem;
+      font-size: 1.1rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar a {
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .sidebar a:hover {
+      color: #ffd700;
+    }
+
+    /* ==================== PAGES ==================== */
+    .page {
+      display: none;
+      animation: fadeIn 0.35s ease-in-out;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* ==================== FUNCTION BOXES ==================== */
+    .function-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .function-box {
+      background: #0f2547;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .function-box h3 {
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ffd700;
+      color: #0b1a33;
+      padding: 0.6rem 1.1rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      background: #ffea70;
+      text-decoration: none;
+    }
+
+    /* ==================== FORMS ==================== */
+    form {
+      background: #0f2547;
+      border: 2px solid #ffd700;
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin-top: 1.2rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: #ffd700;
+      font-size: 0.95rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ffd700;
+      border-radius: 4px;
+      background: #071224;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* ==================== BUY TOOLS & LIBRARY ==================== */
+    .tools-library {
+      margin-top: 1.5rem;
+      background: #0f2547;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .tool-card {
+      background: #071224;
+      border: 1px solid #ffd700;
+      border-radius: 6px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .tool-card h4 {
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    /* ==================== CONTACT & MAP ==================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 320px;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+    }
+
+    /* ==================== NEWS POSTS ==================== */
+    .news-post {
+      background: #0f2547;
+      border-left: 4px solid #ffd700;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+    }
+
+    .news-post small {
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+
+    /* ==================== CHAT SYSTEM ==================== */
+    .auth-box {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .chat-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #0f2547;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: #071224;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #ffd700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header h3 {
+      color: #ffd700;
+      font-size: 1.1rem;
+    }
+
+    .chat-messages {
+      height: 320px;
+      overflow-y: auto;
+      padding: 1rem;
+      background: #0b1a33;
+    }
+
+    .message {
+      margin-bottom: 0.7rem;
+      max-width: 80%;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      word-wrap: break-word;
+    }
+
+    .message.customer {
+      background: #16365c;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .message.technician {
+      background: #0f2547;
+      border: 1px solid #ffd700;
+    }
+
+    .chat-input-area {
+      display: flex;
+      padding: 0.7rem;
+      background: #071224;
+      border-top: 1px solid #ffd700;
+      gap: 0.5rem;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .chat-input-area button {
+      white-space: nowrap;
+    }
+
+    .user-info {
+      background: #0f2547;
+      border: 1px solid #ffd700;
+      padding: 0.8rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* ==================== FOOTER ==================== */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #071224;
+      border-top: 3px solid #ffd700;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      .logo-container {
+        justify-content: center;
+      }
+      nav ul {
+        justify-content: center;
+      }
+      .layout {
+        flex-direction: column;
+      }
+      .sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-container">
+      <!-- Elliptical Logo -->
+      <div class="logo">
+        <div class="abbr">ICS</div>
+        <div class="full">IREMWA<br/>COOLING<br/>SYSTEM</div>
+      </div>
+      <div class="company-name">IREMWA COOLING SYSTEM Ltd</div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><button class="nav-btn active" data-page="home">Home</button></li>
+        <li><button class="nav-btn" data-page="service">Our Service</button></li>
+        <li><button class="nav-btn" data-page="contact">Contact Us</button></li>
+        <li><button class="nav-btn" data-page="tools">Buy Tools</button></li>
+        <li><button class="nav-btn" data-page="chat">Chat</button></li>
+        <li><button class="nav-btn" data-page="news">News</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- LANGUAGE SECTION -->
+  <section class="lang-section">
+    <div class="lang-title">Language / Langue / Ururimi</div>
+    <div class="lang-options">
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+      <button class="lang-btn" onclick="setLang('fr')">Français</button>
+      <button class="lang-btn" onclick="setLang('rw')">Kinyarwanda</button>
+    </div>
+  </section>
+
+  <!-- MAIN LAYOUT -->
+  <div class="layout">
+
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+
+      <!-- ===== HOME PAGE ===== -->
+      <section id="home" class="page active">
+        <h1 id="home-title">Welcome to IREMWA COOLING SYSTEM Ltd</h1>
+        <p id="home-desc">Your trusted partner for professional cooling and air conditioning solutions in Rwanda.</p>
+
+        <div class="function-grid">
+          <!-- Function 1: Message Technician -->
+          <div class="function-box">
+            <h3 id="func-msg-title">Message a Technician</h3>
+            <p id="func-msg-desc">Get in touch directly with our technical team.</p>
+            <a href="mailto:tech@iremwacooling.com" class="btn" id="func-msg-btn">Send Email</a>
+          </div>
+
+          <!-- Function 2: Customer Claim -->
+          <div class="function-box">
+            <h3 id="func-claim-title">Submit a Claim</h3>
+            <p id="func-claim-desc">Report an issue or request service.</p>
+            <a href="#contact" class="btn" onclick="showPage('contact')" id="func-claim-btn">Go to Claim Form</a>
+          </div>
+
+          <!-- Function 3: Call Technician -->
+          <div class="function-box">
+            <h3 id="func-call-title">Call Technician</h3>
+            <p id="func-call-desc">Reach us instantly by phone.</p>
+            <a href="tel:+250788259846" class="btn">0788259846</a><br/>
+            <a href="tel:+250788492404" class="btn" style="margin-top:0.4rem;">0788492404</a>
+          </div>
+
+          <!-- Function 4: WhatsApp -->
+          <div class="function-box">
+            <h3 id="func-wa-title">WhatsApp Us</h3>
+            <p id="func-wa-desc">Chat with us on WhatsApp.</p>
+            <a href="https://wa.me/250788259846" class="btn" target="_blank" id="func-wa-btn">Open WhatsApp</a>
+          </div>
+        </div>
+
+        <h2 style="margin-top: 2rem;" id="home-news-title">Latest News</h2>
+        <div id="home-news-feed">
+          <div class="news-post">
+            <h3 id="news1-title">New Service Branch Opened in Kigali</h3>
+            <small id="news1-date">Posted on: September 1, 2026</small>
+            <p id="news1-content">We are excited to announce our new service center to serve you better.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== OUR SERVICE PAGE ===== -->
+      <section id="service" class="page">
+        <h1 id="service-title">Our Services</h1>
+        <p id="service-desc">IREMWA COOLING SYSTEM Ltd offers a wide range of cooling solutions:</p>
+        <ul>
+          <li id="serv-li1">Air conditioning installation & maintenance</li>
+          <li id="serv-li2">Refrigeration system repairs</li>
+          <li id="serv-li3">Preventive maintenance contracts</li>
+          <li id="serv-li4">Emergency cooling support</li>
+          <li id="serv-li5">Commercial & residential cooling design</li>
+        </ul>
+
+        <div class="function-grid">
+          <div class="function-box">
+            <h3 id="serv-req-title">Request Service</h3>
+            <p id="serv-req-desc">Schedule a technician visit.</p>
+            <a href="#contact" class="btn" onclick="showPage('contact')" id="serv-req-btn">Go to Contact</a>
+          </div>
+          <div class="function-box">
+            <h3 id="serv-email-title">Email Support</h3>
+            <p id="serv-email-desc">Send us your inquiries.</p>
+            <a href="mailto:support@iremwacooling.com" class="btn" id="serv-email-btn">Email Us</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT US PAGE ===== -->
+      <section id="contact" class="page">
+        <h1 id="contact-title">Contact Us</h1>
+        <p id="contact-desc">Reach out to us for service requests, claims, or general inquiries.</p>
+
+        <div class="contact-grid">
+          <!-- Contact / Claim Form -->
+          <div>
+            <h2 id="contact-form-title">Submit Your Claim / Message</h2>
+            <form id="claim-form">
+              <label for="name" id="label-name">Full Name</label>
+              <input type="text" id="name" required />
+
+              <label for="email" id="label-email">Email Address</label>
+              <input type="email" id="email" required />
+
+              <label for="phone" id="label-phone">Phone Number</label>
+              <input type="tel" id="phone" required />
+
+              <label for="subject" id="label-subject">Subject</label>
+              <input type="text" id="subject" placeholder="e.g. AC Repair Claim" required />
+
+              <label for="message" id="label-message">Message / Claim Details</label>
+              <textarea id="message" required></textarea>
+
+              <button type="submit" class="btn" id="contact-send-btn">Send Message</button>
+            </form>
+          </div>
+
+          <!-- Contact Info & Map -->
+          <div>
+            <h2 id="contact-info-title">Our Contact Details</h2>
+            <p>
+              <strong id="contact-phone-label">Phone:</strong> 
+              <a href="tel:+250788259846">0788259846</a> | 
+              <a href="tel:+250788492404">0788492404</a>
+            </p>
+            <p>
+              <strong id="contact-email-label">Email:</strong> 
+              <a href="mailto:info@iremwacooling.com">info@iremwacooling.com</a>
+            </p>
+            <p>
+              <strong id="contact-wa-label">WhatsApp:</strong> 
+              <a href="https://wa.me/250788259846" target="_blank" id="contact-wa-link">Chat on WhatsApp</a>
+            </p>
+
+            <div class="map-container">
+              <!-- Google Map (Kigali, Rwanda) -->
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15940.56799018929!2d30.058!3d-1.9536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca7b5b0f0c3b1%3A0x6c3c3c3c3c3c3c3c!2sKigali%2C%20Rwanda!5e0!3m2!1sen!2s!4v1600000000000!5m2!1sen!2s"
+                allowfullscreen=""
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== BUY TOOLS PAGE ===== -->
+      <section id="tools" class="page">
+        <h1 id="tools-title">Buy Tools</h1>
+        <p id="tools-desc">Browse and request professional cooling and refrigeration tools.</p>
+
+        <div class="tools-library">
+          <h2 id="library-title">Tools Library</h2>
+          <p id="library-desc">Explore our categories of tools and equipment.</p>
+
+          <div class="tools-grid">
+            <div class="tool-card">
+              <h4 id="tool-fridge">Fridges</h4>
+              <p id="tool-fridge-desc">Diagnostic & repair tools for domestic and commercial fridges.</p>
+              <a href="mailto:tools@iremwacooling.com?subject=Inquiry%20about%20Fridge%20Tools" class="btn" id="tool-fridge-btn">Inquire</a>
+            </div>
+
+            <div class="tool-card">
+              <h4 id="tool-chiller">Chiller Machines</h4>
+              <p id="tool-chiller-desc">Tools for chiller installation, maintenance and troubleshooting.</p>
+              <a href="mailto:tools@iremwacooling.com?subject=Inquiry%20about%20Chiller%20Tools" class="btn" id="tool-chiller-btn">Inquire</a>
+            </div>
+
+            <div class="tool-card">
+              <h4 id="tool-ac-car">Car AC</h4>
+              <p id="tool-ac-car-desc">Equipment for automotive air conditioning service.</p>
+              <a href="mailto:tools@iremwacooling.com?subject=Inquiry%20about%20Car%20AC%20Tools" class="btn" id="tool-ac-car-btn">Inquire</a>
+            </div>
+
+            <div class="tool-card">
+              <h4 id="tool-wash">Washing Machines</h4>
+              <p id="tool-wash-desc">Tools for washing machine repair and maintenance.</p>
+              <a href="mailto:tools@iremwacooling.com?subject=Inquiry%20about%20Washing%20Machine%20Tools" class="btn" id="tool-wash-btn">Inquire</a>
+            </div>
+
+            <div class="tool-card">
+              <h4 id="tool-ac">Air Conditioners</h4>
+              <p id="tool-ac-desc">HVAC tools for split, cassette and central AC systems.</p>
+              <a href="mailto:tools@iremwacooling.com?subject=Inquiry%20about%20AC%20Tools" class="btn" id="tool-ac-btn">Inquire</a>
+            </div>
+
+            <div class="tool-card">
+              <h4 id="tool-install">Installations</h4>
+              <p id="tool-install-desc">Installation kits, pipes, gauges and accessories.</p>
+              <a href="mailto:tools@iremwacooling.com?subject=Inquiry%20about%20Installation%20Tools" class="btn" id="tool-install-btn">Inquire</a>
+            </div>
+
+            <div class="tool-card">
+              <h4 id="tool-others">Others</h4>
+              <p id="tool-others-desc">Additional tools and accessories for cooling systems.</p>
+              <a href="mailto:tools@iremwacooling.com?subject=Inquiry%20about%20Other%20Tools" class="btn" id="tool-others-btn">Inquire</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CHAT PAGE ===== -->
+      <section id="chat" class="page">
+        <h1 id="chat-page-title">Customer–Technician Chat</h1>
+        <p id="chat-page-desc">Create an account or log in to chat privately with our technicians.</p>
+
+        <!-- Auth Section -->
+        <div id="auth-section" class="auth-box">
+          <h2 id="auth-title">Register / Login</h2>
+          <form id="auth-form">
+            <label for="auth-name" id="auth-name-label">Full Name</label>
+            <input type="text" id="auth-name" required />
+
+            <label for="auth-email" id="auth-email-label">Email</label>
+            <input type="email" id="auth-email" required />
+
+            <label for="auth-pass" id="auth-pass-label">Password</label>
+            <input type="password" id="auth-pass" required />
+
+            <button type="submit" class="btn" id="auth-submit-btn">Create Account & Login</button>
+          </form>
+          <p style="margin-top:0.8rem; font-size:0.9rem;" id="auth-note">
+            This is a demo: your account exists only in this browser session.
+          </p>
+        </div>
+
+        <!-- Chat Section (shown after login) -->
+        <div id="chat-section" style="display:none;">
+          <div class="user-info">
+            <strong id="user-welcome-label">Logged in as:</strong>
+            <span id="user-display"></span>
+            <button class="btn" id="logout-btn" style="margin-left:1rem; font-size:0.85rem;">Logout</button>
+          </div>
+
+          <div class="chat-container">
+            <div class="chat-header">
+              <h3 id="chat-with-label">Chat with IREMWA Technician</h3>
+              <a href="mailto:tech@iremwacooling.com" class="btn" style="font-size:0.8rem;" id="chat-email-btn">Email Technician</a>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+              <div class="message technician">
+                Hello! How can we help you with your cooling system today?
+              </div>
+            </div>
+
+            <div class="chat-input-area">
+              <input type="text" id="chat-input" placeholder="Type your message..." />
+              <button class="btn" id="chat-send-btn">Send</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== NEWS PAGE ===== -->
+      <section id="news" class="page">
+        <h1 id="news-page-title">News & Updates</h1>
+        <p id="news-page-desc">Stay updated with the latest from IREMWA COOLING SYSTEM Ltd.</p>
+
+        <h2 id="post-news-title">Post a New Update (Demo)</h2>
+        <form id="news-form">
+          <label for="news-title-input" id="news-title-label">Title</label>
+          <input type="text" id="news-title-input" required />
+
+          <label for="news-content-input" id="news-content-label">Content</label>
+          <textarea id="news-content-input" required></textarea>
+
+          <button type="submit" class="btn" id="news-post-btn">Post News</button>
+        </form>
+
+        <h2 style="margin-top: 2rem;" id="news-feed-title">News Feed</h2>
+        <div id="news-feed">
+          <div class="news-post">
+            <h3 id="news2-title">Summer Maintenance Campaign Launched</h3>
+            <small id="news2-date">Posted on: August 20, 2026</small>
+            <p id="news2-content">Take advantage of our discounted maintenance packages this season.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar">
+      <h3 id="sidebar-quick-title">Quick Actions</h3>
+      <ul>
+        <li><a href="#contact" onclick="showPage('contact')" id="sidebar-claim">Submit a Claim</a></li>
+        <li><a href="tel:+250788259846" id="sidebar-call1">Call 0788259846</a></li>
+        <li><a href="tel:+250788492404" id="sidebar-call2">Call 0788492404</a></li>
+        <li><a href="https://wa.me/250788259846" target="_blank" id="sidebar-wa">WhatsApp Technician</a></li>
+        <li><a href="mailto:tech@iremwacooling.com" id="sidebar-email">Email Technician</a></li>
+        <li><a href="#chat" onclick="showPage('chat')" id="sidebar-chat">Open Chat</a></li>
+      </ul>
+
+      <h3 style="margin-top: 1.5rem;" id="sidebar-lang-title">Language Help</h3>
+      <p id="sidebar-lang-desc" style="font-size:0.9rem;">
+        Use the language bar at the top to switch between English, Français, and Kinyarwanda.
+      </p>
+
+      <h3 style="margin-top: 1.5rem;" id="sidebar-loc-title">Our Location</h3>
+      <p id="sidebar-loc-desc" style="font-size:0.9rem;">
+        Kigali, Rwanda – see map on the Contact Us page.
+      </p>
+    </aside>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 IREMWA COOLING SYSTEM Ltd. All rights reserved.</p>
+    <p>
+      <span id="footer-contact">Contact:</span> 
+      0788259846 | 0788492404 | 
+      <a href="mailto:info@iremwacooling.com">info@iremwacooling.com</a>
+    </p>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // Page navigation
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const pages = document.querySelectorAll('.page');
+
+    function showPage(pageId) {
+      pages.forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+
+      navButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.page === pageId);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        showPage(btn.dataset.page);
+      });
+    });
+
+    // Claim / Contact form (demo)
+    document.getElementById('claim-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      alert(`Thank you, ${name}! Your claim/message has been sent to our technicians.`);
+      this.reset();
+    });
+
+    // News post form (demo: add to news feed & home feed)
+    document.getElementById('news-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const title = document.getElementById('news-title-input').value;
+      const content = document.getElementById('news-content-input').value;
+      const date = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+      const newsHTML = `
+        <div class="news-post">
+          <h3>${title}</h3>
+          <small>Posted on: ${date}</small>
+          <p>${content}</p>
+        </div>
+      `;
+
+      const newsFeed = document.getElementById('news-feed');
+      newsFeed.insertAdjacentHTML('afterbegin', newsHTML);
+
+      const homeNewsFeed = document.getElementById('home-news-feed');
+      homeNewsFeed.insertAdjacentHTML('afterbegin', newsHTML);
+
+      alert('News posted successfully!');
+      this.reset();
+    });
+
+    // ===== CHAT SYSTEM (DEMO) =====
+    const authSection = document.getElementById('auth-section');
+    const chatSection = document.getElementById('chat-section');
+    const authForm = document.getElementById('auth-form');
+    const userDisplay = document.getElementById('user-display');
+    const logoutBtn = document.getElementById('logout-btn');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const chatSendBtn = document.getElementById('chat-send-btn');
+
+    let currentUser = null;
+
+    authForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('auth-name').value.trim();
+      const email = document.getElementById('auth-email').value.trim();
+      const pass = document.getElementById('auth-pass').value;
+
+      if (!name || !email || !pass) {
+        alert('Please fill all fields.');
+        return;
+      }
+
+      // Simulate account creation & login
+      currentUser = { name, email };
+      userDisplay.textContent = `${name} (${email})`;
+
+      authSection.style.display = 'none';
+      chatSection.style.display = 'block';
+    });
+
+    logoutBtn.addEventListener('click', function() {
+      currentUser = null;
+      authSection.style.display = 'block';
+      chatSection.style.display = 'none';
+      authForm.reset();
+      // Clear chat messages except initial technician message
+      chatMessages.innerHTML = `
+        <div class="message technician">
+          Hello! How can we help you with your cooling system today?
+        </div>
+      `;
+    });
+
+    function addMessage(text, type) {
+      const div = document.createElement('div');
+      div.className = `message ${type}`;
+      div.textContent = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    chatSendBtn.addEventListener('click', function() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      addMessage(text, 'customer');
+      chatInput.value = '';
+
+      // Simulate technician reply after short delay
+      setTimeout(() => {
+        addMessage('Thank you for your message. A technician will respond shortly.', 'technician');
+      }, 800);
+    });
+
+    chatInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        chatSendBtn.click();
+      }
+    });
+
+    // ===== LANGUAGE SWITCHER (DEMO) =====
+    const content = {
+      en: {
+        homeTitle: "Welcome to IREMWA COOLING SYSTEM Ltd",
+        homeDesc: "Your trusted partner for professional cooling and air conditioning solutions in Rwanda.",
+        funcMsgTitle: "Message a Technician",
+        funcMsgDesc: "Get in touch directly with our technical team.",
+        funcMsgBtn: "Send Email",
+        funcClaimTitle: "Submit a Claim",
+        funcClaimDesc: "Report an issue or request service.",
+        funcClaimBtn: "Go to Claim Form",
+        funcCallTitle: "Call Technician",
+        funcCallDesc: "Reach us instantly by phone.",
+        funcWaTitle: "WhatsApp Us",
+        funcWaDesc: "Chat with us on WhatsApp.",
+        funcWaBtn: "Open WhatsApp",
+        homeNewsTitle: "Latest News",
+        serviceTitle: "Our Services",
+        serviceDesc: "IREMWA COOLING SYSTEM Ltd offers a wide range of cooling solutions:",
+        servLi1: "Air conditioning installation & maintenance",
+        servLi2: "Refrigeration system repairs",
+        servLi3: "Preventive maintenance contracts",
+        servLi4: "Emergency cooling support",
+        servLi5: "Commercial & residential cooling design",
+        servReqTitle: "Request Service",
+        servReqDesc: "Schedule a technician visit.",
+        servReqBtn: "Go to Contact",
+        servEmailTitle: "Email Support",
+        servEmailDesc: "Send us your inquiries.",
+        servEmailBtn: "Email Us",
+        contactTitle: "Contact Us",
+        contactDesc: "Reach out to us for service requests, claims, or general inquiries.",
+        contactFormTitle: "Submit Your Claim / Message",
+        labelName: "Full Name",
+        labelEmail: "Email Address",
+        labelPhone: "Phone Number",
+        labelSubject: "Subject",
+        labelMessage: "Message / Claim Details",
+        contactSendBtn: "Send Message",
+        contactInfoTitle: "Our Contact Details",
+        contactPhoneLabel: "Phone:",
+        contactEmailLabel: "Email:",
+        contactWaLabel: "WhatsApp:",
+        contactWaLink: "Chat on WhatsApp",
+        toolsTitle: "Buy Tools",
+        toolsDesc: "Browse and request professional cooling and refrigeration tools.",
+        libraryTitle: "Tools Library",
+        libraryDesc: "Explore our categories of tools and equipment.",
+        toolFridge: "Fridges",
+        toolFridgeDesc: "Diagnostic & repair tools for domestic and commercial fridges.",
+        toolFridgeBtn: "Inquire",
+        toolChiller: "Chiller Machines",
+        toolChillerDesc: "Tools for chiller installation, maintenance and troubleshooting.",
+        toolChillerBtn: "Inquire",
+        toolAcCar: "Car AC",
+        toolAcCarDesc: "Equipment for automotive air conditioning service.",
+        toolAcCarBtn: "Inquire",
+        toolWash: "Washing Machines",
+        toolWashDesc: "Tools for washing machine repair and maintenance.",
+        toolWashBtn: "Inquire",
+        toolAc: "Air Conditioners",
+        toolAcDesc: "HVAC tools for split, cassette and central AC systems.",
+        toolAcBtn: "Inquire",
+        toolInstall: "Installations",
+        toolInstallDesc: "Installation kits, pipes, gauges and accessories.",
+        toolInstallBtn: "Inquire",
+        toolOthers: "Others",
+        toolOthersDesc: "Additional tools and accessories for cooling systems.",
+        toolOthersBtn: "Inquire",
+        chatPageTitle: "Customer–Technician Chat",
+        chatPageDesc: "Create an account or log in to chat privately with our technicians.",
+        authTitle: "Register / Login",
+        authNameLabel: "Full Name",
+        authEmailLabel: "Email",
+        authPassLabel: "Password",
+        authSubmitBtn: "Create Account & Login",
+        authNote: "This is a demo: your account exists only in this browser session.",
+        userWelcomeLabel: "Logged in as:",
+        chatWithEmailBtn: "Email Technician",
+        chatWithLabel: "Chat with IREMWA Technician",
+        newsPageTitle: "News & Updates",
+        newsPageDesc: "Stay updated with the latest from IREMWA COOLING SYSTEM Ltd.",
+        postNewsTitle: "Post a New Update (Demo)",
+        newsTitleLabel: "Title",
+        newsContentLabel: "Content",
+        newsPostBtn: "Post News",
+        newsFeedTitle: "News Feed",
+        sidebarQuickTitle: "Quick Actions",
+        sidebarClaim: "Submit a Claim",
+        sidebarCall1: "Call 0788259846",
+        sidebarCall2: "Call 0788492404",
+        sidebarWa: "WhatsApp Technician",
+        sidebarEmail: "Email Technician",
+        sidebarChat: "Open Chat",
+        sidebarLangTitle: "Language Help",
+        sidebarLangDesc: "Use the language bar at the top to switch between English, Français, and Kinyarwanda.",
+        sidebarLocTitle: "Our Location",
+        sidebarLocDesc: "Kigali, Rwanda – see map on the Contact Us page.",
+        footerContact: "Contact:"
+      },
+      fr: {
+        homeTitle: "Bienvenue chez IREMWA COOLING SYSTEM Ltd",
+        homeDesc: "Votre partenaire de confiance pour des solutions professionnelles de refroidissement et de climatisation au Rwanda.",
+        funcMsgTitle: "Contacter un technicien",
+        funcMsgDesc: "Communiquez directement avec notre équipe technique.",
+        funcMsgBtn: "Envoyer un e-mail",
+        funcClaimTitle: "Soumettre une réclamation",
+        funcClaimDesc: "Signalez un problème ou demandez un service.",
+        funcClaimBtn: "Aller au formulaire",
+        funcCallTitle: "Appeler un technicien",
+        funcCallDesc: "Joignez-nous immédiatement par téléphone.",
+        funcWaTitle: "WhatsApp",
+        funcWaDesc: "Discutez avec nous sur WhatsApp.",
+        funcWaBtn: "Ouvrir WhatsApp",
+        homeNewsTitle: "Dernières nouvelles",
+        serviceTitle: "Nos services",
+        serviceDesc: "IREMWA COOLING SYSTEM Ltd offre une large gamme de solutions de refroidissement :",
+        servLi1: "Installation et maintenance de la climatisation",
+        servLi2: "Réparation de systèmes de réfrigération",
+        servLi3: "Contrats de maintenance préventive",
+        servLi4: "Assistance de refroidissement d'urgence",
+        servLi5: "Conception de refroidissement commercial et résidentiel",
+        servReqTitle: "Demander un service",
+        servReqDesc: "Planifiez la visite d'un technicien.",
+        servReqBtn: "Aller à Contact",
+        servEmailTitle: "Support par e-mail",
+        servEmailDesc: "Envoyez-nous vos demandes.",
+        servEmailBtn: "Nous écrire",
+        contactTitle: "Contactez-nous",
+        contactDesc: "Contactez-nous pour des demandes de service, des réclamations ou des questions générales.",
+        contactFormTitle: "Soumettre votre réclamation / message",
+        labelName: "Nom complet",
+        labelEmail: "Adresse e-mail",
+        labelPhone: "Numéro de téléphone",
+        labelSubject: "Sujet",
+        labelMessage: "Message / Détails de la réclamation",
+        contactSendBtn: "Envoyer le message",
+        contactInfoTitle: "Nos coordonnées",
+        contactPhoneLabel: "Téléphone :",
+        contactEmailLabel: "E-mail :",
+        contactWaLabel: "WhatsApp :",
+        contactWaLink: "Discuter sur WhatsApp",
+        toolsTitle: "Acheter des outils",
+        toolsDesc: "Parcourez et demandez des outils professionnels de refroidissement et de réfrigération.",
+        libraryTitle: "Bibliothèque d'outils",
+        libraryDesc: "Explorez nos catégories d'outils et d'équipements.",
+        toolFridge: "Réfrigérateurs",
+        toolFridgeDesc: "Outils de diagnostic et de réparation pour réfrigérateurs domestiques et commerciaux.",
+        toolFridgeBtn: "Demander",
+        toolChiller: "Groupes frigorifiques",
+        toolChillerDesc: "Outils pour l'installation, la maintenance et le dépannage des chillers.",
+        toolChillerBtn: "Demander",
+        toolAcCar: "Climatisation auto",
+        toolAcCarDesc: "Équipement pour le service de climatisation automobile.",
+        toolAcCarBtn: "Demander",
+        toolWash: "Machines à laver",
+        toolWashDesc: "Outils pour la réparation et la maintenance des machines à laver.",
+        toolWashBtn: "Demander",
+        toolAc: "Climatiseurs",
+        toolAcDesc: "Outils HVAC pour systèmes split, cassette et centraux.",
+        toolAcBtn: "Demander",
+        toolInstall: "Installations",
+        toolInstallDesc: "Kits d'installation, tuyaux, manomètres et accessoires.",
+        toolInstallBtn: "Demander",
+        toolOthers: "Autres",
+        toolOthersDesc: "Outils et accessoires supplémentaires pour systèmes de refroidissement.",
+        toolOthersBtn: "Demander",
+        chatPageTitle: "Discussion client–technicien",
+        chatPageDesc: "Créez un compte ou connectez-vous pour discuter en privé avec nos techniciens.",
+        authTitle: "S'inscrire / Se connecter",
+        authNameLabel: "Nom complet",
+        authEmailLabel: "E-mail",
+        authPassLabel: "Mot de passe",
+        authSubmitBtn: "Créer un compte et se connecter",
+        authNote: "Ceci est une démo : votre compte existe uniquement dans cette session de navigateur.",
+        userWelcomeLabel: "Connecté en tant que :",
+        chatWithEmailBtn: "E-mail Technicien",
+        chatWithLabel: "Discussion avec un technicien IREMWA",
+        newsPageTitle: "Actualités et mises à jour",
+        newsPageDesc: "Restez informé des dernières nouvelles d'IREMWA COOLING SYSTEM Ltd.",
+        postNewsTitle: "Publier une nouvelle mise à jour (Démo)",
+        newsTitleLabel: "Titre",
+        newsContentLabel: "Contenu",
+        newsPostBtn: "Publier",
+        newsFeedTitle: "Fil d'actualités",
+        sidebarQuickTitle: "Actions rapides",
+        sidebarClaim: "Soumettre une réclamation",
+        sidebarCall1: "Appeler 0788259846",
+        sidebarCall2: "Appeler 0788492404",
+        sidebarWa: "WhatsApp Technicien",
+        sidebarEmail: "E-mail Technicien",
+        sidebarChat: "Ouvrir le chat",
+        sidebarLangTitle: "Aide linguistique",
+        sidebarLangDesc: "Utilisez la barre de langue en haut pour basculer entre English, Français et Kinyarwanda.",
+        sidebarLocTitle: "Notre emplacement",
+        sidebarLocDesc: "Kigali, Rwanda – voir la carte sur la page Contact.",
+        footerContact: "Contact :"
+      },
+      rw: {
+        homeTitle: "Murakaze neza muri IREMWA COOLING SYSTEM Ltd",
+        homeDesc: "Umwizerwa wanyu mu bikorwa by'ubuhanga bwo gukonjesha no gushyiraho imiyoboro y'umwuka mu Rwanda.",
+        funcMsgTitle: "Andika umutekanyije",
+        funcMsgDesc: "Vugana na tekinisiye zacu ukoresheje imeli.",
+        funcMsgBtn: "Ohereza imeli",
+        funcClaimTitle: "Ohereza ikirego",
+        funcClaimDesc: "Tangaza ikibazo cyangwa usabe serivisi.",
+        funcClaimBtn: "Jya ku ifishi",
+        funcCallTitle: "Hamagara tekinisiye",
+        funcCallDesc: "Twandike vuba ukoresheje telefone.",
+        funcWaTitle: "WhatsApp",
+        funcWaDesc: "Vugana natwe ukoresheje WhatsApp.",
+        funcWaBtn: "Fungura WhatsApp",
+        homeNewsTitle: "Amakuru aheruka",
+        serviceTitle: "Serivisi zacu",
+        serviceDesc: "IREMWA COOLING SYSTEM Ltd itanga ubwoko bwinshi bw'ibikoresho byo gukonjesha:",
+        servLi1: "Gushyiraho no kubungabunga imiyoboro y'umwuka",
+        servLi2: "Gusanika sisitemu zibika ibikonjesha",
+        servLi3: "Amasezerano yo kubungabunga mbere y'uko haba ikibazo",
+        servLi4: "Inkunga y'ibikonjesha mu bihe by'ibyangombwa",
+        servLi5: "Gushyiraho sisitemu z'ibikonjesha mu mazu n'ibigo",
+        servReqTitle: "Saba serivisi",
+        servReqDesc: "Gena igihe tekinisiye azaza.",
+        servReqBtn: "Jya kuri Contact",
+        servEmailTitle: "Inkunga ku imeli",
+        servEmailDesc: "Ohereza ibibazo byawe.",
+        servEmailBtn: "Twandikire",
+        contactTitle: "Twandikire",
+        contactDesc: "Twandikire kugira ngo usabe serivisi, ikirego cyangwa ibibazo rusange.",
+        contactFormTitle: "Ohereza ikirego cyangwa ubutumwa",
+        labelName: "Izina ryuzuye",
+        labelEmail: "Imeli",
+        labelPhone: "Nomero ya telefone",
+        labelSubject: "Umutwe",
+        labelMessage: "Ubutumwa / Ibirambuye by'ikirego",
+        contactSendBtn: "Ohereza ubutumwa",
+        contactInfoTitle: "Aho waduhamagara",
+        contactPhoneLabel: "Telefone:",
+        contactEmailLabel: "Imeli:",
+        contactWaLabel: "WhatsApp:",
+        contactWaLink: "Vugana na WhatsApp",
+        toolsTitle: "Gura ibikoresho",
+        toolsDesc: "Reba kandi usabe ibikoresho by'ubuhanga byo gukonjesha no kubika ibikonjesha.",
+        libraryTitle: "Ikusanyabikoresho",
+        libraryDesc: "Suzuma ibyiciro by'ibikoresho dufite.",
+        toolFridge: "Furigo",
+        toolFridgeDesc: "Ibikoresho byo gusuzuma no gusanika furigo zo mu rugo n'iz'ubucuruzi.",
+        toolFridgeBtn: "Saba amakuru",
+        toolChiller: "Imashini zikonjesha (Chiller)",
+        toolChillerDesc: "Ibikoresho byo gushyiraho, kubungabunga no gusanika chiller.",
+        toolChillerBtn: "Saba amakuru",
+        toolAcCar: "AC y'imodoka",
+        toolAcCarDesc: "Ibikoresho byo gusanika no kubungabunga AC z'imodoka.",
+        toolAcCarBtn: "Saba amakuru",
+        toolWash: "Imashini zoza",
+        toolWashDesc: "Ibikoresho byo gusanika imashini zoza.",
+        toolWashBtn: "Saba amakuru",
+        toolAc: "Ibikonjesha (Air Conditioners)",
+        toolAcDesc: "Ibikoresho bya HVAC bya sisitemu za split, cassette na central.",
+        toolAcBtn: "Saba amakuru",
+        toolInstall: "Ibirango byo gushyiraho",
+        toolInstallDesc: "Ibikoresho, imiyoboro, ibipimo n'ibindi byo gushyiraho.",
+        toolInstallBtn: "Saba amakuru",
+        toolOthers: "Ibindi",
+        toolOthersDesc: "Ibindi bikoresho byongera ku sisitemu z'ibikonjesha.",
+        toolOthersBtn: "Saba amakuru",
+        chatPageTitle: "Kuganira hagati y'umukiriya na tekinisiye",
+        chatPageDesc: "Fungura konti cyangwa winjire kugira ngo uvugane na tekinisiye mu buryo bw'ibanga.",
+        authTitle: "Iyandikishe / Injira",
+        authNameLabel: "Izina ryuzuye",
+        authEmailLabel: "Imeli",
+        authPassLabel: "Ijambo ry'ibanga",
+        authSubmitBtn: "Fungura konti hanyuma winjire",
+        authNote: "Iyi ni demo: konti yawe ibaho gusa muri iyi sesiyo ya burawuzi.",
+        userWelcomeLabel: "Winjiye nka:",
+        chatWithEmailBtn: "Imeli ya tekinisiye",
+        chatWithLabel: "Kuganira na tekinisiye ya IREMWA",
+        newsPageTitle: "Amakuru n'ibihinduka",
+        newsPageDesc: "Komeza umenye amakuru mashya ya IREMWA COOLING SYSTEM Ltd.",
+        postNewsTitle: "Shyiraho ikindi kintu gishya (Demo)",
+        newsTitleLabel: "Umutwe",
+        newsContentLabel: "Umwandiko",
+        newsPostBtn: "Shyiraho",
+        newsFeedTitle: "Urutonde rw'amakuru",
+        sidebarQuickTitle: "Ibikorwa byihuse",
+        sidebarClaim: "Ohereza ikirego",
+        sidebarCall1: "Hamagara 0788259846",
+        sidebarCall2: "Hamagara 0788492404",
+        sidebarWa: "WhatsApp ya tekinisiye",
+        sidebarEmail: "Imeli ya tekinisiye",
+        sidebarChat: "Fungura chat",
+        sidebarLangTitle: "Inkunga y'ururimi",
+        sidebarLangDesc: "Koresha umutambike w'ururimi hejuru kugira ngo uhindure hagati ya English, Français na Kinyarwanda.",
+        sidebarLocTitle: "Aho ducuruza",
+        sidebarLocDesc: "Kigali, Rwanda – reba ikarita kuri page ya Contact.",
+        footerContact: "Twandikire:"
+      }
+    };
+
+    function setLang(lang) {
+      const t = content[lang] || content.en;
+
+      document.getElementById('home-title').textContent = t.homeTitle;
+      document.getElementById('home-desc').textContent = t.homeDesc;
+
+      document.getElementById('func-msg-title').textContent = t.funcMsgTitle;
+      document.getElementById('func-msg-desc').textContent = t.funcMsgDesc;
+      document.getElementById('func-msg-btn').textContent = t.funcMsgBtn;
+
+      document.getElementById('func-claim-title').textContent = t.funcClaimTitle;
+      document.getElementById('func-claim-desc').textContent = t.funcClaimDesc;
+      document.getElementById('func-claim-btn').textContent = t.funcClaimBtn;
+
+      document.getElementById('func-call-title').textContent = t.funcCallTitle;
+      document.getElementById('func-call-desc').textContent = t.funcCallDesc;
+
+      document.getElementById('func-wa-title').textContent = t.funcWaTitle;
+      document.getElementById('func-wa-desc').textContent = t.funcWaDesc;
+      document.getElementById('func-wa-btn').textContent = t.funcWaBtn;
+
+      document.getElementById('home-news-title').textContent = t.homeNewsTitle;
+
+      document.getElementById('service-title').textContent = t.serviceTitle;
+      document.getElementById('service-desc').textContent = t.serviceDesc;
+      document.getElementById('serv-li1').textContent = t.servLi1;
+      document.getElementById('serv-li2').textContent = t.servLi2;
+      document.getElementById('serv-li3').textContent = t.servLi3;
+      document.getElementById('serv-li4').textContent = t.servLi4;
+      document.getElementById('serv-li5').textContent = t.servLi5;
+
+      document.getElementById('serv-req-title').textContent = t.servReqTitle;
+      document.getElementById('serv-req-desc').textContent = t.servReqDesc;
+      document.getElementById('serv-req-btn').textContent = t.servReqBtn;
+
+      document.getElementById('serv-email-title').textContent = t.servEmailTitle;
+      document.getElementById('serv-email-desc').textContent = t.servEmailDesc;
+      document.getElementById('serv-email-btn').textContent = t.servEmailBtn;
+
+      document.getElementById('contact-title').textContent = t.contactTitle;
+      document.getElementById('contact-desc').textContent = t.contactDesc;
+      document.getElementById('contact-form-title').textContent = t.contactFormTitle;
+
+      document.getElementById('label-name').textContent = t.labelName;
+      document.getElementById('label-email').textContent = t.labelEmail;
+      document.getElementById('label-phone').textContent = t.labelPhone;
+      document.getElementById('label-subject').textContent = t.labelSubject;
+      document.getElementById('label-message').textContent = t.labelMessage;
+      document.getElementById('contact-send-btn').textContent = t.contactSendBtn;
+
+      document.getElementById('contact-info-title').textContent = t.contactInfoTitle;
+      document.getElementById('contact-phone-label').textContent = t.contactPhoneLabel;
+      document.getElementById('contact-email-label').textContent = t.contactEmailLabel;
+      document.getElementById('contact-wa-label').textContent = t.contactWaLabel;
+      document.getElementById('contact-wa-link').textContent = t.contactWaLink;
+
+      document.getElementById('tools-title').textContent = t.toolsTitle;
+      document.getElementById('tools-desc').textContent = t.toolsDesc;
+
+      document.getElementById('library-title').textContent = t.libraryTitle;
+      document.getElementById('library-desc').textContent = t.libraryDesc;
+
+      document.getElementById('tool-fridge').textContent = t.toolFridge;
+      document.getElementById('tool-fridge-desc').textContent = t.toolFridgeDesc;
+      document.getElementById('tool-fridge-btn').textContent = t.toolFridgeBtn;
+
+      document.getElementById('tool-chiller').textContent = t.toolChiller;
+      document.getElementById('tool-chiller-desc').textContent = t.toolChillerDesc;
+      document.getElementById('tool-chiller-btn').textContent = t.toolChillerBtn;
+
+      document.getElementById('tool-ac-car').textContent = t.toolAcCar;
+      document.getElementById('tool-ac-car-desc').textContent = t.toolAcCarDesc;
+      document.getElementById('tool-ac-car-btn').textContent = t.toolAcCarBtn;
+
+      document.getElementById('tool-wash').textContent = t.toolWash;
+      document.getElementById('tool-wash-desc').textContent = t.toolWashDesc;
+      document.getElementById('tool-wash-btn').textContent = t.toolWashBtn;
+
+      document.getElementById('tool-ac').textContent = t.toolAc;
+      document.getElementById('tool-ac-desc').textContent = t.toolAcDesc;
+      document.getElementById('tool-ac-btn').textContent = t.toolAcBtn;
+
+      document.getElementById('tool-install').textContent = t.toolInstall;
+      document.getElementById('tool-install-desc').textContent = t.toolInstallDesc;
+      document.getElementById('tool-install-btn').textContent = t.toolInstallBtn;
+
+      document.getElementById('tool-others').textContent = t.toolOthers;
+      document.getElementById('tool-others-desc').textContent = t.toolOthersDesc;
+      document.getElementById('tool-others-btn').textContent = t.toolOthersBtn;
+
+      document.getElementById('chat-page-title').textContent = t.chatPageTitle;
+      document.getElementById('chat-page-desc').textContent = t.chatPageDesc;
+
+      document.getElementById('auth-title').textContent = t.authTitle;
+      document.getElementById('auth-name-label').textContent = t.authNameLabel;
+      document.getElementById('auth-email-label').textContent = t.authEmailLabel;
+      document.getElementById('auth-pass-label').textContent = t.authPassLabel;
+      document.getElementById('auth-submit-btn').textContent = t.authSubmitBtn;
+      document.getElementById('auth-note').textContent = t.authNote;
+
+      document.getElementById('user-welcome-label').textContent = t.userWelcomeLabel;
+      document.getElementById('chat-email-btn').textContent = t.chatWithEmailBtn;
+      document.getElementById('chat-with-label').textContent = t.chatWithLabel;
+
+      document.getElementById('news-page-title').textContent = t.newsPageTitle;
+      document.getElementById('news-page-desc').textContent = t.newsPageDesc;
+
+      document.getElementById('post-news-title').textContent = t.postNewsTitle;
+      document.getElementById('news-title-label').textContent = t.newsTitleLabel;
+      document.getElementById('news-content-label').textContent = t.newsContentLabel;
+      document.getElementById('news-post-btn').textContent = t.newsPostBtn;
+
+      document.getElementById('news-feed-title').textContent = t.newsFeedTitle;
+
+      document.getElementById('sidebar-quick-title').textContent = t.sidebarQuickTitle;
+      document.getElementById('sidebar-claim').textContent = t.sidebarClaim;
+      document.getElementById('sidebar-call1').textContent = t.sidebarCall1;
+      document.getElementById('sidebar-call2').textContent = t.sidebarCall2;
+      document.getElementById('sidebar-wa').textContent = t.sidebarWa;
+      document.getElementById('sidebar-email').textContent = t.sidebarEmail;
+      document.getElementById('sidebar-chat').textContent = t.sidebarChat;
+
+      document.getElementById('sidebar-lang-title').textContent = t.sidebarLangTitle;
+      document.getElementById('sidebar-lang-desc').textContent = t.sidebarLangDesc;
+
+      document.getElementById('sidebar-loc-title').textContent = t.sidebarLocTitle;
+      document.getElementById('sidebar-loc-desc').textContent = t.sidebarLocDesc;
+
+      document.getElementById('footer-contact').textContent = t.footerContact;
+    }
+  </script>
+
+</body>
+</html>
